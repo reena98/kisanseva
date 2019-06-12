@@ -1,0 +1,836 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DB1333F-30AA-4297-8180-E021B53C1CAE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>trial</RootNamespace>
+    <AssemblyName>trial</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Generate Invoice PDF in Shopping Website\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="about.aspx" />
+    <Content Include="aboutfarm.aspx" />
+    <Content Include="addproductnew.aspx" />
+    <Content Include="addprofile.aspx" />
+    <Content Include="Addtocart.aspx" />
+    <Content Include="App_Data\Database2.mdf" />
+    <Content Include="App_Data\Database2_log %282%29.ldf" />
+    <Content Include="App_Data\Database2_log.ldf">
+      <DependentUpon>Database2.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Database3.mdf" />
+    <Content Include="App_Data\Database3_log.ldf">
+      <DependentUpon>Database3.mdf</DependentUpon>
+    </Content>
+    <Content Include="atma.aspx" />
+    <Content Include="CHECK.aspx" />
+    <Content Include="checkout.aspx" />
+    <Content Include="checkoutview.aspx" />
+    <Content Include="common.aspx" />
+    <Content Include="Confirm.aspx" />
+    <Content Include="confirmfarm.aspx" />
+    <Content Include="confirmfarmer.aspx" />
+    <Content Include="contact.aspx" />
+    <Content Include="continueshop.aspx" />
+    <Content Include="cropsposted.aspx" />
+    <Content Include="design1\css\animate.css" />
+    <Content Include="design1\css\blue.css" />
+    <Content Include="design1\css\bootstrap.min.css" />
+    <Content Include="design1\css\mains\animate.css" />
+    <Content Include="design1\css\mains\app.css" />
+    <Content Include="design1\css\mains\app.js" />
+    <Content Include="design1\css\mains\bootstrap-thumbnail.css" />
+    <Content Include="design1\css\mains\bootstrap.min.css" />
+    <Content Include="design1\css\mains\bootstrap.min.js" />
+    <Content Include="design1\css\mains\default.css" />
+    <Content Include="design1\css\mains\jquery-ui.min.css" />
+    <Content Include="design1\css\mains\jquery-ui.min.js" />
+    <Content Include="design1\css\mains\jquery.counterup.min.js" />
+    <Content Include="design1\css\mains\jquery.min.js" />
+    <Content Include="design1\css\mains\jquery.selectbox-0.1.3.min.js" />
+    <Content Include="design1\css\mains\map.js" />
+    <Content Include="design1\css\mains\optionswitch.css" />
+    <Content Include="design1\css\mains\optionswitcher.js" />
+    <Content Include="design1\css\mains\select_option1.css" />
+    <Content Include="design1\farmercss\bootstrap.min.css" />
+    <Content Include="design1\farmercss\farmercss.css" />
+    <Content Include="design1\css\default.css" />
+    <Content Include="design1\css\font-awesome.min.css" />
+    <Content Include="design1\css\owl.carousel.min.css" />
+    <Content Include="design1\css\owl.theme.default.min.css" />
+    <Content Include="design1\css\skin-green.css" />
+    <Content Include="design1\css\style.css" />
+    <Content Include="design1\css\swiper.css" />
+    <Content Include="design1\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="design1\images\logo.png" />
+    <Content Include="design1\images\pexels-photo-1093837.jpeg" />
+    <Content Include="design1\images\pexels-photo-709817.jpeg" />
+    <Content Include="design1\images\pexels-photo-811109.jpeg" />
+    <Content Include="design1\images\pulsesindia.png" />
+    <Content Include="design1\js\bootstrap.min.js" />
+    <Content Include="design1\js\custom.min.js" />
+    <Content Include="design1\js\gmaps.js" />
+    <Content Include="design1\js\jquery-3.1.1.min.js" />
+    <Content Include="design1\js\jquery.downCount.js" />
+    <Content Include="design1\js\jquery.min.js" />
+    <Content Include="design1\js\jquery.sticky.js" />
+    <Content Include="design1\js\main.js" />
+    <Content Include="design1\js\nouislider.min.js" />
+    <Content Include="design1\js\owl.carousel.min.js" />
+    <Content Include="design1\js\pace.min.js" />
+    <Content Include="design1\js\popper.min.js" />
+    <Content Include="design1\js\star-rating.min.js" />
+    <Content Include="design1\js\swiper.min.js" />
+    <Content Include="design1\js\wow.min.js" />
+    <Content Include="Design\css\plugins.min.css" />
+    <Content Include="Design\css\preload.min.css" />
+    <Content Include="Design\css\style.light-blue-500.min.css" />
+    <Content Include="Design\css\vendor.css" />
+    <Content Include="Design\js\app.min.js" />
+    <Content Include="Design\js\common.min.js" />
+    <Content Include="Design\js\configurator.min.js" />
+    <Content Include="Design\js\main.min.js" />
+    <Content Include="Design\js\plugins.min.js" />
+    <Content Include="Design\js\tpl.js" />
+    <Content Include="Design\js\vendor.min.js" />
+    <Content Include="EditOrder.aspx" />
+    <Content Include="faq.aspx" />
+    <Content Include="faqfarm.aspx" />
+    <Content Include="farmercontinue.aspx" />
+    <Content Include="farmerlogin.aspx" />
+    <Content Include="AddProduct.aspx" />
+    <Content Include="farmerorder.aspx" />
+    <Content Include="farmerschemes.aspx" />
+    <Content Include="Farmer\agri.aspx" />
+    <Content Include="cart.aspx" />
+    <Content Include="Farmer\css\all.min.css" />
+    <Content Include="Farmer\css\font-awesome.min.css" />
+    <Content Include="Farmer\css\vendor.min.css" />
+    <Content Include="Farmer\farmerhome.aspx" />
+    <Content Include="farmlog.aspx" />
+    <Content Include="Farmer\farmprof.aspx" />
+    <Content Include="Farmer\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="farmershome.aspx" />
+    <Content Include="Farmer\js\all.min.js" />
+    <Content Include="Farmer\js\bbsnowplow.js" />
+    <Content Include="Farmer\js\footertemplates.js" />
+    <Content Include="Farmer\js\headertemplates.js" />
+    <Content Include="Farmer\js\innertemplates.js" />
+    <Content Include="Farmer\js\vendor.min.js" />
+    <Content Include="Farmer\mainpage.aspx" />
+    <Content Include="Farmer\orderlist.aspx" />
+    <Content Include="Farmer\signup.aspx" />
+    <Content Include="farmshop.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="images\basmati.jpg" />
+    <Content Include="images\idli.jpg" />
+    <Content Include="images\moong.jpg" />
+    <Content Include="images\pulse.jpg" />
+    <Content Include="images\toor.jpg" />
+    <Content Include="img\1Lu6xotGYJblur-countryside-cropland-1146714.jpg" />
+    <Content Include="img\agri.jpg" />
+    <Content Include="img\agriculture-countryside-cropland-2131784.jpg" />
+    <Content Include="img\axewood.jpg" />
+    <Content Include="img\banner_04.jpg" />
+    <Content Include="img\banner_05.jpg" />
+    <Content Include="img\Basmati-Rice.jpg" />
+    <Content Include="img\FVugSqCjy7pexels-photo-226615.jpeg" />
+    <Content Include="img\grains.jpeg" />
+    <Content Include="img\IMG-20181226-WA0004.jpg" />
+    <Content Include="img\jLv04krNDcpexels-photo-708798.jpeg" />
+    <Content Include="img\lDBHrW0jZEbajra.jpg" />
+    <Content Include="img\pexels-photo-226615.jpeg" />
+    <Content Include="img\pexels-photo-709817.jpeg" />
+    <Content Include="img\plough.jpg" />
+    <Content Include="img\sickle.jpg" />
+    <Content Include="img\sickle1.jpg" />
+    <Content Include="img\steelaxe.jpg" />
+    <Content Include="Index.aspx" />
+    <Content Include="krishi.aspx" />
+    <Content Include="LoginNew.aspx" />
+    <Content Include="mainpage.aspx" />
+    <Content Include="majorschemes.aspx" />
+    <Content Include="marketprice.aspx" />
+    <Content Include="mkisan.aspx" />
+    <Content Include="myorder.aspx" />
+    <Content Include="nidhi.aspx" />
+    <Content Include="orderConfirm.aspx" />
+    <Content Include="pest.aspx" />
+    <Content Include="profile.aspx" />
+    <Content Include="Profile\changeadd.aspx" />
+    <Content Include="Profile\changep.aspx" />
+    <Content Include="Profile\editprof.aspx" />
+    <Content Include="Profile\first.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="design1\images\agri.jpg" />
+    <Content Include="design1\images\apple.jpg" />
+    <Content Include="images\cancel.png" />
+    <Content Include="images\email.png" />
+    <Content Include="images\pexels-photo-1468527.jpeg" />
+    <Content Include="images\pexels-photo-696205.jpeg" />
+    <Content Include="images\pexels-photo-708798.jpeg" />
+    <Content Include="images\pexels-photo-709817.jpeg" />
+    <Content Include="images\sli1.jpg" />
+    <Content Include="images\th %281%29.jpg" />
+    <Content Include="images\starfilled.jpg" />
+    <Content Include="images\starempty.jpg" />
+    <Content Include="images\th.jpg" />
+    <Content Include="images\up-arrow.png" />
+    <Content Include="images\user.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="PlaceOrder.aspx" />
+    <Content Include="Profile\js\jquery.min.js" />
+    <Content Include="Profile\css\my-account.css" />
+    <Content Include="Profile\css\shoplist.min.css" />
+    <Content Include="Profile\css\uiv2vendor.min.css" />
+    <Content Include="Profile\js\uiv2vendor.min.js" />
+    <Content Include="Profile\js\uiv2_main.js" />
+    <Content Include="Profile\css\uiv2_main.min.css" />
+    <Content Include="pulsesgk.aspx" />
+    <Content Include="reg.aspx" />
+    <Content Include="farmerreg.aspx" />
+    <Content Include="regpest.aspx" />
+    <Content Include="ricegk.aspx" />
+    <Content Include="schemes.aspx" />
+    <Content Include="success.aspx" />
+    <Content Include="Farmers.Master" />
+    <Content Include="Farmer\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Farmer\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Farmer\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Farmer\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Farmer\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="viewcart.aspx" />
+    <Content Include="tutorials.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebForm2.aspx" />
+    <Content Include="retailerreg.aspx" />
+    <Content Include="webimages\apple.jpg" />
+    <Content Include="webimages\pexels-photo-811109.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aboutfarm.aspx.cs">
+      <DependentUpon>aboutfarm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aboutfarm.aspx.designer.cs">
+      <DependentUpon>aboutfarm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addproductnew.aspx.cs">
+      <DependentUpon>addproductnew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addproductnew.aspx.designer.cs">
+      <DependentUpon>addproductnew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addprofile.aspx.cs">
+      <DependentUpon>addprofile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addprofile.aspx.designer.cs">
+      <DependentUpon>addprofile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Addtocart.aspx.cs">
+      <DependentUpon>Addtocart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Addtocart.aspx.designer.cs">
+      <DependentUpon>Addtocart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="atma.aspx.cs">
+      <DependentUpon>atma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="atma.aspx.designer.cs">
+      <DependentUpon>atma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CHECK.aspx.cs">
+      <DependentUpon>CHECK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CHECK.aspx.designer.cs">
+      <DependentUpon>CHECK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkoutview.aspx.cs">
+      <DependentUpon>checkoutview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkoutview.aspx.designer.cs">
+      <DependentUpon>checkoutview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="common.aspx.cs">
+      <DependentUpon>common.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="common.aspx.designer.cs">
+      <DependentUpon>common.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="confirmfarm.aspx.cs">
+      <DependentUpon>confirmfarm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="confirmfarm.aspx.designer.cs">
+      <DependentUpon>confirmfarm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="confirmfarmer.aspx.cs">
+      <DependentUpon>confirmfarmer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="confirmfarmer.aspx.designer.cs">
+      <DependentUpon>confirmfarmer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="continueshop.aspx.cs">
+      <DependentUpon>continueshop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="continueshop.aspx.designer.cs">
+      <DependentUpon>continueshop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cropsposted.aspx.cs">
+      <DependentUpon>cropsposted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cropsposted.aspx.designer.cs">
+      <DependentUpon>cropsposted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditOrder.aspx.cs">
+      <DependentUpon>EditOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditOrder.aspx.designer.cs">
+      <DependentUpon>EditOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="faq.aspx.cs">
+      <DependentUpon>faq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="faq.aspx.designer.cs">
+      <DependentUpon>faq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="faqfarm.aspx.cs">
+      <DependentUpon>faqfarm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="faqfarm.aspx.designer.cs">
+      <DependentUpon>faqfarm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmercontinue.aspx.cs">
+      <DependentUpon>farmercontinue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmercontinue.aspx.designer.cs">
+      <DependentUpon>farmercontinue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmerlogin.aspx.cs">
+      <DependentUpon>farmerlogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmerlogin.aspx.designer.cs">
+      <DependentUpon>farmerlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmerorder.aspx.cs">
+      <DependentUpon>farmerorder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmerorder.aspx.designer.cs">
+      <DependentUpon>farmerorder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmerschemes.aspx.cs">
+      <DependentUpon>farmerschemes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmerschemes.aspx.designer.cs">
+      <DependentUpon>farmerschemes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\agri.aspx.cs">
+      <DependentUpon>agri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\agri.aspx.designer.cs">
+      <DependentUpon>agri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Class1.cs" />
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\farmerhome.aspx.cs">
+      <DependentUpon>farmerhome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\farmerhome.aspx.designer.cs">
+      <DependentUpon>farmerhome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmers.Master.cs">
+      <DependentUpon>Farmers.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmers.Master.designer.cs">
+      <DependentUpon>Farmers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="farmlog.aspx.cs">
+      <DependentUpon>farmlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmlog.aspx.designer.cs">
+      <DependentUpon>farmlog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\farmprof.aspx.cs">
+      <DependentUpon>farmprof.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\farmprof.aspx.designer.cs">
+      <DependentUpon>farmprof.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmershome.aspx.cs">
+      <DependentUpon>farmershome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmershome.aspx.designer.cs">
+      <DependentUpon>farmershome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\mainpage.aspx.cs">
+      <DependentUpon>mainpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\mainpage.aspx.designer.cs">
+      <DependentUpon>mainpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\orderlist.aspx.cs">
+      <DependentUpon>orderlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\orderlist.aspx.designer.cs">
+      <DependentUpon>orderlist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\signup.aspx.cs">
+      <DependentUpon>signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\signup.aspx.designer.cs">
+      <DependentUpon>signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Farmer\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Farmer\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="farmshop.aspx.cs">
+      <DependentUpon>farmshop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmshop.aspx.designer.cs">
+      <DependentUpon>farmshop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.Master.cs">
+      <DependentUpon>Homepage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage.Master.designer.cs">
+      <DependentUpon>Homepage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="HomepageFooter.Master.cs">
+      <DependentUpon>HomepageFooter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomepageFooter.Master.designer.cs">
+      <DependentUpon>HomepageFooter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="krishi.aspx.cs">
+      <DependentUpon>krishi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="krishi.aspx.designer.cs">
+      <DependentUpon>krishi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginNew.aspx.cs">
+      <DependentUpon>LoginNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginNew.aspx.designer.cs">
+      <DependentUpon>LoginNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainpage.aspx.cs">
+      <DependentUpon>mainpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainpage.aspx.designer.cs">
+      <DependentUpon>mainpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="majorschemes.aspx.cs">
+      <DependentUpon>majorschemes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="majorschemes.aspx.designer.cs">
+      <DependentUpon>majorschemes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="marketprice.aspx.cs">
+      <DependentUpon>marketprice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="marketprice.aspx.designer.cs">
+      <DependentUpon>marketprice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mkisan.aspx.cs">
+      <DependentUpon>mkisan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mkisan.aspx.designer.cs">
+      <DependentUpon>mkisan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="myorder.aspx.cs">
+      <DependentUpon>myorder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="myorder.aspx.designer.cs">
+      <DependentUpon>myorder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nidhi.aspx.cs">
+      <DependentUpon>nidhi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nidhi.aspx.designer.cs">
+      <DependentUpon>nidhi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orderConfirm.aspx.cs">
+      <DependentUpon>orderConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orderConfirm.aspx.designer.cs">
+      <DependentUpon>orderConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pest.aspx.cs">
+      <DependentUpon>pest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pest.aspx.designer.cs">
+      <DependentUpon>pest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\changeadd.aspx.cs">
+      <DependentUpon>changeadd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\changeadd.aspx.designer.cs">
+      <DependentUpon>changeadd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\changep.aspx.cs">
+      <DependentUpon>changep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\changep.aspx.designer.cs">
+      <DependentUpon>changep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\editprof.aspx.cs">
+      <DependentUpon>editprof.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\editprof.aspx.designer.cs">
+      <DependentUpon>editprof.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile\first.aspx.cs">
+      <DependentUpon>first.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile\first.aspx.designer.cs">
+      <DependentUpon>first.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.designer.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="pulsesgk.aspx.cs">
+      <DependentUpon>pulsesgk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pulsesgk.aspx.designer.cs">
+      <DependentUpon>pulsesgk.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reg.aspx.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reg.aspx.designer.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="farmerreg.aspx.cs">
+      <DependentUpon>farmerreg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="farmerreg.aspx.designer.cs">
+      <DependentUpon>farmerreg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="regpest.aspx.cs">
+      <DependentUpon>regpest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="regpest.aspx.designer.cs">
+      <DependentUpon>regpest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ricegk.aspx.cs">
+      <DependentUpon>ricegk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ricegk.aspx.designer.cs">
+      <DependentUpon>ricegk.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemes.aspx.cs">
+      <DependentUpon>schemes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemes.aspx.designer.cs">
+      <DependentUpon>schemes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="success.aspx.cs">
+      <DependentUpon>success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="success.aspx.designer.cs">
+      <DependentUpon>success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tutorials.aspx.cs">
+      <DependentUpon>tutorials.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tutorials.aspx.designer.cs">
+      <DependentUpon>tutorials.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewcart.aspx.cs">
+      <DependentUpon>viewcart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewcart.aspx.designer.cs">
+      <DependentUpon>viewcart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="retailerreg.aspx.cs">
+      <DependentUpon>retailerreg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="retailerreg.aspx.designer.cs">
+      <DependentUpon>retailerreg.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Farmer\Site1.Master" />
+    <Content Include="design1\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="design1\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="design1\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="design1\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="design1\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Homepage.Master" />
+    <Content Include="HomepageFooter.Master" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Farmer\images\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50598</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50598/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,312 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Homepage.master.cs"  CodeFile="~/Homepage.Master.cs" Inherits="trial.Homepage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="design1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="design1/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="design1/css/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="design1/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" type="text/css" href="design1/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="design1/css/swiper.css" />
+
+    <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="design1/css/default.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="topBar">
+            <div class="container">
+
+                <ul class="list-inline pull-left hidden-sm hidden-xs">
+                    <li><i class="fa fa-phone mr-5"></i>7715834660</li>
+                    <li><i class="fa fa-envelope mr-5"></i>kisanseva@gmail.com</li>
+
+
+                </ul>
+
+                <ul class="topBarNav pull-right">
+                    <%--  <li><a href="javascript:void(0);" data-toggle="modal" data-target=".loginModal"> Login</a></li>
+                    <li><a href="javascript:void(0);" data-toggle="modal" data-target=".registerModal"> Register</a></li>--%>
+                    <li class="linkdown">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-user mr-5"></i>
+                            <span class="hidden-xs">My Account
+                                <i class="fa fa-angle-down ml-5"></i>
+                            </span>
+                        </a>
+                        <ul class="w-150">
+                            <%-- <li><a href="wishlist.html">Wishlist (5)</a></li>--%>
+                            <li><a href="addprofile.aspx">My Profile</a></li>
+                            <li><a href="continueshop.aspx">Shop</a></li>
+
+                            <li><a href="viewcart.aspx">My Cart</a></li>
+                            <li><a href="checkoutview.aspx">Checkout</a></li>
+                               <li><a href="myorder.aspx">My Order</a></li>
+
+                             <li><a href="about.aspx">About Us</a></li>
+                            <li><a href="faq.aspx">FAQ</a></li>
+                           
+
+                        </ul>
+                    </li>
+                    <li class="linkdown">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-shopping-basket mr-5"></i>
+                            <span class="hidden-xs">Cart<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><sup class="text-primary"></sup>
+                                <i class="fa fa-angle-down ml-5"></i>
+                            </span>
+                        </a>
+                        <ul class="cart w-250">
+                            <li>
+                                <div class="cart-items">
+                                    <ol class="items">
+                                        <%--  <li>
+                                            <a href="shop-single-product-v1.html" class="product-image">
+                                                <img src="img/products/men_06.jpg" alt="Sample Product ">
+                                            </a>
+                                            <div class="product-details">
+                                                <div class="close-icon">
+                                                    <a href="javascript:void(0);"><i class="fa fa-close"></i></a>
+                                                </div>
+                                                <p class="product-name">
+                                                    <a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a>
+                                                </p>
+                                                <strong>1</strong> x <span class="price text-primary">$59.99</span>
+                                            </div>
+                                            <!-- end product-details -->
+                                        </li>--%>
+                                        <!-- end item -->
+
+
+                                        <li>
+
+                                            <asp:GridView ID="GridView2"
+                                                CellPadding="1" CellSpacing="1" CssClass="table table-striped" AllowPaging="true"
+                                                ShowFooter="True" runat="server" DataKeyNames="sno" OnRowCommand="GridView2_RowCommand" AutoGenerateColumns="False"
+                                                OnRowDeleting="GridView2_RowDeleting" PageSize="5" OnPageIndexChanging="GridView2_PageIndexChanging">
+                                                <Columns>
+
+
+                                                    <asp:TemplateField HeaderText="Products" >
+                                                        <ItemTemplate>
+                                                            <asp:Image Style="height: 45px; width: 45px;" runat="server" ImageUrl='<%# Eval("productimage") %>' />
+                                                            <%--   <asp:Image runat="server" ImageUrl="~/images/user.png" />--%>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                    <asp:TemplateField HeaderText="Product Name" >
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblname" runat="server" Text='<%# Eval("productname") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%-- <asp:TemplateField HeaderText="Price">
+                                    <ItemTemplate>
+                                        <i class="fa fa-rupee text-primary"></i>&nbsp;<asp:Label ID="lblPrice" runat="server" Text=' <%# Eval("price") %>' CssClass="text-primary"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                                                    <%--<asp:TemplateField HeaderText="Quantity">
+                                    <ItemTemplate>
+
+                                        <asp:LinkButton ID="lnkbtnsub" runat="server" Text="-" ToolTip="sub" CommandName="sub" CommandArgument='<%# Eval("sno") %>'
+                                            Visible=' <%# Convert.ToInt32(Eval("quantity"))>1?true: false %>' CssClass="minusquantity" />
+
+                                        <asp:Label ID="lblQuantity" runat="server" Text=' <%# Eval("quantity") %>'></asp:Label>
+
+                                        <asp:LinkButton ID="lnkbtnAdd" runat="server" Text="+" CssClass="addquantity" ToolTip="Add" CommandName="Add" CommandArgument='<%# Eval("sno") %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total">
+                                    <ItemTemplate>
+                                        <i class="fa fa-rupee text-primary"></i>&nbsp;<asp:Label ID="lbltotalprice" runat="server" Text=' <%# Eval("totalcost") %>' CssClass="text-primary"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="lnkbtnRemove" Text="x" runat="server" CommandName="Delete" CommandArgument='<%# Eval("sno") %>' class="close"></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                        <FooterTemplate>
+
+                                                            <asp:Label ID="lbl" runat="server" Text="Grand Total ="></asp:Label>
+
+                                                            <asp:Label ID="lblGrandTotal" runat="server" Text="22"></asp:Label>
+                                                            <%--<%# Eval("GrandTotal") %>--%>
+                                                        </FooterTemplate>
+                                                    </asp:TemplateField>
+
+                                                </Columns>
+                                                <PagerSettings Mode="Numeric" Visible="true" />
+                                                <PagerStyle CssClass="pagergrid" />
+
+                                            </asp:GridView>
+                                        </li>
+                                        <!-- end item -->
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cart-footer">
+                                    <a href="viewcart.aspx" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
+                                    <a href="checkoutview.aspx" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mainpage.aspx" target="_self" class="fa fa-power-off"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end container -->
+        </div>
+        <div class="middleBar">
+            <div class="container">
+                <div class="row display-table">
+                    <div class="col-sm-3 vertical-align text-left hidden-xs">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-leaf logo" aria-hidden="true"></i>
+                            <span class="header">KISAN SEVA</span>
+                        </a>
+                    </div>
+                    <%-- <!-- end col -->
+                    <div class="col-sm-7 vertical-align text-center">
+                        <form>
+                            <div class="row grid-space-1">
+                                <div class="col-sm-6">
+                                    <input type="text" name="keyword" class="form-control input-lg" placeholder="Search">
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-3">
+                                    <select class="form-control input-lg" name="category">
+                                        <option value="all">All Categories</option>
+                                        <optgroup label="Mens">
+                                            <option value="shirts">Shirts</option>
+                                            <option value="coats-jackets">Coats & Jackets</option>
+                                            <option value="underwear">Underwear</option>
+                                            <option value="sunglasses">Sunglasses</option>
+                                            <option value="socks">Socks</option>
+                                            <option value="belts">Belts</option>
+                                        </optgroup>
+                                        <optgroup label="Womens">
+                                            <option value="bresses">Bresses</option>
+                                            <option value="t-shirts">T-shirts</option>
+                                            <option value="skirts">Skirts</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="pullover">Pullover</option>
+                                        </optgroup>
+                                        <option value="kids">Kids</option>
+                                        <option value="fashion">Fashion</option>
+                                        <optgroup label="Sportwear">
+                                            <option value="shoes">Shoes</option>
+                                            <option value="bags">Bags</option>
+                                            <option value="pants">Pants</option>
+                                            <option value="swimwear">Swimwear</option>
+                                            <option value="bicycles">Bicycles</option>
+                                        </optgroup>
+                                        <option value="bags">Bags</option>
+                                        <option value="shoes">Shoes</option>
+                                        <option value="hoseholds">HoseHolds</option>
+                                        <optgroup label="Technology">
+                                            <option value="tv">TV</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="speakers">Speakers</option>
+                                            <option value="mobile">Mobile</option>
+                                            <option value="pc">PC</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-3">
+                                    <input type="submit" class="btn btn-default btn-block btn-lg" value="Search">
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </form>
+                    </div>
+                    <!-- end col -->
+                    
+                    <!-- end col -->--%>
+                </div>
+                <!-- end  row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end middleBar 
+        <!-- start navbar -->
+        <div class="swiper-container swiper-coverflow">
+            <div class="swiper-wrapper">
+                <asp:ContentPlaceHolder ID="middlebar" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="swiper-pagination swiper-pagination-h"></div>
+            <!-- Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+
+        <section class="section white-backgorund">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="Collections" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </section>
+        <!-- start section -->
+
+        <asp:ContentPlaceHolder ID="customerService" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <!-- end section -->
+
+        <!-- start footer -->
+        <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
+
+        <!-- end footer -->
+
+
+        <!-- JavaScript Files -->
+        <script type="text/javascript" src="design1/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="design1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="design1/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="design1/js/jquery.downCount.js"></script>
+        <script type="text/javascript" src="design1/js/nouislider.min.js"></script>
+        <script type="text/javascript" src="design1/js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="design1/js/pace.min.js"></script>
+        <script type="text/javascript" src="design1/js/star-rating.min.js"></script>
+        <script type="text/javascript" src="design1/js/wow.min.js"></script>
+        <script type="text/javascript" src="design1/js/swiper.min.js"></script>
+
+        <!-- Initialize Swiper slide -->
+        <script>
+            var swiperH = new Swiper('.swiper-coverflow', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,
+                effect: 'coverflow',
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                loop: true,
+                coverflow: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true
+                }
+            });
+        </script>
+    </form>
+</body>
+</html>

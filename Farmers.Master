@@ -1,0 +1,754 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Farmers.master.cs" CodeBehind="Farmers.master.cs" Inherits="trial.Farmer.Farmers" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="design1/farmercss/bootstrap.min.css" rel="stylesheet" />
+    <link href="design1/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="design1/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="design1/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="design1/farmercss/farmercss.css" rel="stylesheet" />
+    <link href="design1/css/animate.css" rel="stylesheet" />
+    <link href="design1/css/swiper.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+       
+        <!-- start topBar -->
+        <div class="topBar">
+            <div class="container">
+                <ul class="list-inline pull-left hidden-sm hidden-xs">
+                    <li><span class="text-primary">Have a question?</span> Call 7715834660</li>
+                </ul>
+                
+                <ul class="topBarNav pull-right">
+                    
+                   
+                    <li class="linkdown">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-user mr-5"></i>
+                            <span class="hidden-xs">
+                                My Account 
+                                <i class="fa fa-angle-down ml-5"></i>
+                            </span>
+                        </a>
+                        <ul class="w-150">
+                            <li class="divider"></li>
+                              <li><a href="cart.aspx">My Cart</a></li>
+                           <li><a href="farmercontinue.aspx">Shop</a></li>
+                       
+                           <li><a href="profile.aspx">My Profile</a></li>
+                            <li><a href="checkout.aspx">Checkout</a></li>
+                        </ul>
+                    </li>
+                    <li class="linkdown">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-shopping-basket mr-5"></i>
+                            <span class="hidden-xs">
+                                Cart<sup class="text-primary"><asp:Label ID="Label1" runat="server" Text=""></asp:Label></sup>
+                                <i class="fa fa-angle-down ml-5"></i>
+                            </span>    
+                        </a>
+                        <ul class="cart w-250">
+                            <li>
+                                <div class="cart-items">
+                                    <ol class="items">
+                                      
+                                     
+                        <asp:GridView ID="GridView2"
+                            CellPadding="1" CellSpacing="1" CssClass="table table-striped" AllowPaging="true" 
+                            ShowFooter="True" runat="server" DataKeyNames="sno" OnRowCommand="GridView2_RowCommand" AutoGenerateColumns="False"
+                            OnRowDeleting="GridView2_RowDeleting" PageSize="5" OnPageIndexChanging="GridView2_PageIndexChanging">
+                            <Columns>
+
+
+                                <asp:TemplateField HeaderText="Products">
+                                    <ItemTemplate>
+                                        <asp:Image style="height:45px;width:45px;" runat="server" ImageUrl='<%# Eval("Image") %>' />
+                                     <%--   <asp:Image runat="server" ImageUrl="~/images/user.png" />--%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Product Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblname" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Price">
+                                    <ItemTemplate>
+                                        <i class="fa fa-rupee text-primary"></i>&nbsp;<asp:Label ID="lblPrice" runat="server" Text=' <%# Eval("Price") %>' CssClass="text-primary"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+              <%--                  <asp:TemplateField HeaderText="Quantity">
+                                    <ItemTemplate>
+
+                                        <asp:LinkButton ID="lnkbtnsub" runat="server" Text="-" ToolTip="sub" CommandName="sub" CommandArgument='<%# Eval("sno") %>'
+                                            Visible=' <%# Convert.ToInt32(Eval("quantity"))>1?true: false %>' CssClass="minusquantity" />
+
+                                        <asp:Label ID="lblQuantity" runat="server" Text=' <%# Eval("quantity") %>'></asp:Label>
+
+                                        <asp:LinkButton ID="lnkbtnAdd" runat="server" Text="+" CssClass="addquantity" ToolTip="Add" CommandName="Add" CommandArgument='<%# Eval("sno") %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Total">
+                                    <ItemTemplate>
+                                        <i class="fa fa-rupee text-primary"></i>&nbsp;<asp:Label ID="lbltotalprice" runat="server" Text=' <%# Eval("totalcost") %>' CssClass="text-primary"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+
+<%--                                        <asp:LinkButton ID="lnkbtnRemove" Text="x" runat="server" CommandName="Delete" CommandArgument='<%# Eval("sno") %>' class="close"></asp:LinkButton>
+                   --%>                 </ItemTemplate>
+                                    <FooterTemplate>
+                                        <div style="float: right;">
+                                            <asp:Label ID="lbl" runat="server" Text="Grand Total ="></asp:Label>
+
+                                            <asp:Label ID="lblGrandTotal" runat="server" Text="22"></asp:Label>
+                                            <%--<%# Eval("GrandTotal") %>--%>
+                                        </div>
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+
+                            </Columns>
+                             <PagerSettings Mode="Numeric" Visible="true"  />
+                            <PagerStyle CssClass="pagergrid"/>
+                           
+                        </asp:GridView>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cart-footer">
+                                    <a href="cart.aspx" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
+                                    <a href="checkout.aspx" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
+                                </div>
+                              </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mainpage.aspx" target="_self" class="fa fa-power-off"></a>
+                    </li>
+                </ul>
+            </div><!-- end container -->
+        </div>
+        <!-- end topBar -->
+            <div class="middleBar">
+            <div class="container">
+                <div class="row display-table">
+                    <div class="col-sm-3 vertical-align text-left hidden-xs">
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-leaf logo" aria-hidden="true"></i>
+                            <span class="header">KISAN SEVA</span>
+                        </a>
+                    </div>
+                    <%-- <!-- end col -->
+                    <div class="col-sm-7 vertical-align text-center">
+                        <form>
+                            <div class="row grid-space-1">
+                                <div class="col-sm-6">
+                                    <input type="text" name="keyword" class="form-control input-lg" placeholder="Search">
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-3">
+                                    <select class="form-control input-lg" name="category">
+                                        <option value="all">All Categories</option>
+                                        <optgroup label="Mens">
+                                            <option value="shirts">Shirts</option>
+                                            <option value="coats-jackets">Coats & Jackets</option>
+                                            <option value="underwear">Underwear</option>
+                                            <option value="sunglasses">Sunglasses</option>
+                                            <option value="socks">Socks</option>
+                                            <option value="belts">Belts</option>
+                                        </optgroup>
+                                        <optgroup label="Womens">
+                                            <option value="bresses">Bresses</option>
+                                            <option value="t-shirts">T-shirts</option>
+                                            <option value="skirts">Skirts</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="pullover">Pullover</option>
+                                        </optgroup>
+                                        <option value="kids">Kids</option>
+                                        <option value="fashion">Fashion</option>
+                                        <optgroup label="Sportwear">
+                                            <option value="shoes">Shoes</option>
+                                            <option value="bags">Bags</option>
+                                            <option value="pants">Pants</option>
+                                            <option value="swimwear">Swimwear</option>
+                                            <option value="bicycles">Bicycles</option>
+                                        </optgroup>
+                                        <option value="bags">Bags</option>
+                                        <option value="shoes">Shoes</option>
+                                        <option value="hoseholds">HoseHolds</option>
+                                        <optgroup label="Technology">
+                                            <option value="tv">TV</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="speakers">Speakers</option>
+                                            <option value="mobile">Mobile</option>
+                                            <option value="pc">PC</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-3">
+                                    <input type="submit" class="btn btn-default btn-block btn-lg" value="Search">
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </form>
+                    </div>
+                    <!-- end col -->
+                    
+                    <!-- end col -->--%>
+                </div>
+                <!-- end  row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <div class="navbar yamm navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="javascript:void(0);" class="navbar-brand visible-xs">
+                        <img src="img/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div id="navbar-collapse-3" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li class="dropdown active"><a href="farmershome.aspx" >Home</a>
+                           <%-- <ul role="menu" class="dropdown-menu">
+                                <li><a href="home-v1.html">Home - Version 1</a></li>
+                                <li><a href="home-v2.html">Home - Version 2</a></li>
+                                <li><a href="home-v3.html">Home - Version 3</a></li>
+                                 </ul><!-- end ul dropdown-menu -->--%>
+                        </li><!-- end li dropdown -->    
+                        <!-- Features --><li class="dropdown active"><a href="farmercontinue.aspx" >Buy Tools</a>
+                           <%-- <ul role="menu" class="dropdown-menu">
+                                <li><a href="home-v1.html">Home - Version 1</a></li>
+                                <li><a href="home-v2.html">Home - Version 2</a></li>
+                                <li><a href="home-v3.html">Home - Version 3</a></li>
+                                 </ul><!-- end ul dropdown-menu -->--%>
+                        </li><!-- end li dropdown -->    
+                      
+                        <!-- Home -->
+                        <li class="dropdown left"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Programmes and Schemes<i class="fa fa-angle-down ml-5"></i></a>
+                            <ul class="dropdown-menu">
+                                 <li class="divider"></li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Schemes</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="schemes.aspx">Pradhan Mantri Fasal Bima Yojana</a></li>
+                                      <li><a href="krishi.aspx">Paramparagat Krishi Vikas Yojana</a></li>
+                                      <li><a href="nidhi.aspx">Pradhan Mantri KISAN Samman Nidhi</a></li>
+                                      
+                                       
+                                    </ul>
+                                    </li>
+                                
+                               <li><a href="marketprice.aspx">Market price</a></li>
+                                <li><a href="majorschemes.aspx">Major Ministry Schemes</a></li>
+                                 </ul><!-- end ul dropdown-menu -->
+                        </li><!-- end li dropdown -->    
+                        <!-- Features -->
+                        <li class="dropdown left"><a href="#"c data-toggle="dropdown" class="dropdown-toggle">Major crops<i class="fa fa-angle-down ml-5"></i></a>
+                            <ul class="dropdown-menu">
+                                 <li class="divider"></li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Rice</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="ricegk.aspx">General Info</a></li>
+                                      
+                                       
+                                    </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Pulses</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="pulsesgk.aspx">General Info</a></li>
+                                       
+                                    </ul>
+                                </li>
+                            </ul><!-- end ul dropdown-menu -->
+                        </li><!-- end li dropdown -->
+                            
+                                <li class="dropdown active"><a href="javascript:void(0);" data-toggle="dropdown" class="dropdown-toggle" >Crops Posted<i class="fa fa-angle-down ml-5"></i></a>
+                                    <ul class="dropdown-menu" role="menu" >
+                                        <li><a href="addproductnew.aspx">Add new crop for selling</a></li>
+                                       
+                                    </ul>
+                                </li>
+                            </ul><!-- end ul dropdown-menu -->
+                      
+                        <!-- Pages -->
+                     <%--   <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Pages<i class="fa fa-angle-down ml-5"></i></a>
+                    --%>   <%--     <ul class="dropdown-menu">
+                                <li>
+                                    <!-- Content container to add padding -->
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            <ul class="col-sm-3">
+                                                <li class="title">
+                                                    <h6>Shop Pages</h6>
+                                                </li>
+                                                <li><a href="shop-sidebar-left.html">Sidebar Left</a></li>
+                                                <li><a href="shop-sidebar-right.html">Sidebar Right</a></li>
+                                                <li><a href="shop-filter-top.html">Filters Top</a></li>
+                                                <li><a href="shop-full-width-sidebar-left.html">Full Width Sidebar Left</a></li>
+                                                <li><a href="shop-full-width-sidebar-right.html">Full Width Sidebar Right</a></li>
+                                                <li><a href="shop-full-width-filter-top.html">Full Width Filters Top</a></li>
+                                                <li><a href="category.html">Category <span class="label primary-background">1.1</span></a></li>
+                                                <li><a href="shop-single-product-v1.html">Single product</a></li>
+                                                <li><a href="shop-single-product-v2.html">Single product v2 <span class="label primary-background">1.3</span></a></li>
+                                                <li class="title">
+                                                    <h6>Contact Pages</h6>
+                                                </li>
+                                                <li><a href="contact-v1.html">Contact Us Version 1</a></li>
+                                                <li><a href="contact-v2.html">Contact Us Version 2</a></li>
+                                            </ul><!-- end ul col -->
+                                            <ul class="col-sm-3">
+                                                <li class="title">
+                                                    <h6>About us Pages</h6>
+                                                </li>
+                                                <li><a href="about-us-v1.html">About Us Version 1</a></li>
+                                                <li><a href="about-us-v2.html">About Us Version 2</a></li>
+                                                <li><a href="about-us-v3.html">About Us Version 3</a></li>
+                                                <li class="title">
+                                                    <h6>Blog Pages</h6>
+                                                </li>
+                                                <li><a href="blog-v1.html">Blog Version 1</a></li>
+                                                <li><a href="blog-v2.html">Blog Version 2</a></li>
+                                                <li><a href="blog-v3.html">Blog Version 3</a></li>
+                                                <li><a href="blog-article-v1.html">Blog article</a></li>
+                                            </ul><!-- end ul col -->
+                                            <ul class="col-sm-3">
+                                                <li class="title">
+                                                    <h6>User account</h6>
+                                                </li>
+                                                <li><a href="login.html">Login</a></li>
+                                                <li><a href="register.html">Register</a></li>
+                                                <li><a href="login-register.html">Login or Register</a></li>
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="cart.html">Cart</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="user-information.html">User Information</a></li>
+                                                <li><a href="order-list.html">Order List</a></li>
+                                                <li><a href="order-confirmation.html">Order Confirmation <span class="label primary-background">1.1</span></a></li>
+                                                <li><a href="forgot-password.html">Forgot Password</a></li>
+                                            </ul><!-- end ul col -->
+                                            <ul class="col-sm-3">
+                                                <li class="title">
+                                                    <h6>Other Pages</h6>
+                                                </li>
+                                                <li><a href="help.html">Help</a></li>
+                                                <li><a href="faq.html">Faq</a></li>
+                                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                                <li><a href="blank-page.html">Blank Page <span class="label primary-background">1.1</span></a></li>
+                                                <li><a href="404-error.html">404 Error</a></li>
+                                                <li><a href="500-error.html">500 Error</a></li>
+                                                <li><a href="coming-soon.html">Coming soon</a></li>
+                                                <li><a href="subscribe.html">Subscribe</a></li>
+                                            </ul><!-- end ul col -->
+                                        </div><!-- end row -->
+                                    </div><!-- end yamn-content -->
+                                </li><!-- end li -->
+                           </ul><!-- end ul dropdown-menu -->
+                  
+                        <!-- elements -->
+                        <%--<li><a href="elements.html">Elements</a></li>
+                        <!-- Collections -->
+                        <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Collections<i class="fa fa-angle-down ml-5"></i></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3">
+                                                <a href="javascript:void(0);">
+                                                    <figure class="zoom-out">
+                                                        <img alt="" src="img/banners/collection_01.JPG">
+                                                    </figure>
+                                                </a>
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <a href="javascript:void(0);">
+                                                    <figure class="zoom-in">
+                                                        <img alt="" src="img/banners/collection_02.JPG">
+                                                    </figure>
+                                                </a>
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <a href="javascript:void(0);">
+                                                    <figure class="zoom-out">
+                                                        <img alt="" src="img/banners/collection_03.JPG">
+                                                    </figure>
+                                                </a>
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <a href="javascript:void(0);">
+                                                    <figure class="zoom-in">
+                                                        <img alt="" src="img/banners/collection_04.JPG">
+                                                    </figure>
+                                                </a>
+                                            </div><!-- end col -->
+                                        </div><!-- end row -->
+                                        
+                                        <hr class="spacer-20 no-border">
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3">
+                                                <h6>Pellentes que nec diam lectus</h6>
+                                                <p>Proin pulvinar libero quis auctor pharet ra. Aenean fermentum met us orci, sedf eugiat augue pulvina r vitae. Nulla dolor nisl, molestie nec aliquam vitae, gravida sodals dolor...</p>
+                                                <button type="button" class="btn btn-default round btn-md">Read more</button>
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <div class="thumbnail store style1">
+                                                    <div class="header">
+                                                        <div class="badges">
+                                                            <span class="product-badge top left white-backgorund text-primary semi-circle">Sale</span>
+                                                            <span class="product-badge top right text-primary">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-half-o"></i>
+                                                            </span>
+                                                        </div>
+                                                        <figure class="layer">
+                                                            <img src="img/products/men_01.jpg" alt="">
+                                                        </figure>
+                                                        <div class="icons">
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="caption">
+                                                        <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                                        <div class="price">
+                                                            <small class="amount off">$68.99</small>
+                                                            <span class="amount text-primary">$59.99</span>
+                                                        </div>
+                                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
+                                                    </div><!-- end caption -->
+                                                </div><!-- end thumbnail -->
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <div class="thumbnail store style1">
+                                                    <div class="header">
+                                                        <div class="badges">
+                                                            <span class="product-badge top left white-backgorund text-primary semi-circle">Sale</span>
+                                                            <span class="product-badge top right text-primary">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-half-o"></i>
+                                                            </span>
+                                                        </div>
+                                                        <figure class="layer">
+                                                            <img src="img/products/women_01.jpg" alt="">
+                                                        </figure>
+                                                        <div class="icons">
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="caption">
+                                                        <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                                        <div class="price">
+                                                            <small class="amount off">$68.99</small>
+                                                            <span class="amount text-primary">$59.99</span>
+                                                        </div>
+                                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
+                                                    </div><!-- end caption -->
+                                                </div><!-- end thumbnail -->
+                                            </div><!-- end col -->
+                                            <div class="col-xs-12 col-sm-3">
+                                                <div class="thumbnail store style1">
+                                                    <div class="header">
+                                                        <div class="badges">
+                                                            <span class="product-badge top left white-backgorund text-primary semi-circle">Sale</span>
+                                                            <span class="product-badge top right text-primary">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-half-o"></i>
+                                                            </span>
+                                                        </div>
+                                                        <figure class="layer">
+                                                            <img src="img/products/kids_01.jpg" alt="">
+                                                        </figure>
+                                                        <div class="icons">
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                                            <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="caption">
+                                                        <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                                        <div class="price">
+                                                            <small class="amount off">$68.99</small>
+                                                            <span class="amount text-primary">$59.99</span>
+                                                        </div>
+                                                        <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
+                                                    </div><!-- end caption -->
+                                                </div><!-- end thumbnail -->
+                                            </div><!-- end col -->
+                                        </div><!-- end row -->
+                                    </div><!-- end yamm-content -->
+                                </li><!-- end li -->
+                            </ul><!-- end dropdown-menu -->
+                        </li><!-- end dropdown -->--%>
+                  
+               
+                <%--    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown right">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <span class="hidden-sm">Categories</span><i class="fa fa-bars ml-5"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Mens</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="category.html">Shirts</a></li>
+                                        <li><a href="category.html">Coats & Jackets</a></li>
+                                        <li><a href="category.html">Underwear</a></li>
+                                        <li><a href="category.html">Sunglasses</a></li>
+                                        <li><a href="category.html">Socks</a></li>
+                                        <li><a href="category.html">Belts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Womens</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="category.html">Bresses</a></li>
+                                        <li><a href="category.html">T-shirts</a></li>
+                                        <li><a href="category.html">Skirts</a></li>
+                                        <li><a href="category.html">Jeans</a></li>
+                                        <li><a href="category.html">Pullover</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0);">Kids</a></li>
+                                <li><a href="javascript:void(0);">Fashion</a></li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">SportWear</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="category.html">Shoes</a></li>
+                                        <li><a href="category.html">Bags</a></li>
+                                        <li><a href="category.html">Pants</a></li>
+                                        <li><a href="category.html">SwimWear</a></li>
+                                        <li><a href="category.html">Bicycles</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0);">Bags</a></li>
+                                <li><a href="javascript:void(0);">Shoes</a></li>
+                                <li><a href="javascript:void(0);">HouseHolds</a></li>
+                                <li class="dropdown-submenu"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Technology</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="category.html">TV</a></li>
+                                        <li><a href="category.html">Camera</a></li>
+                                        <li><a href="category.html">Speakers</a></li>
+                                        <li><a href="category.html">Mobile</a></li>
+                                        <li><a href="category.html">PC</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- end ul dropdown-menu -->
+                        </li><!-- end dropdown -->
+                    </ul>--%><!-- end navbar-right -->
+                </div><!-- end navbar collapse -->
+            </div><!-- end container -->
+        </div><!-- end navbar -->
+        
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        <%--<div class="middleBar">
+            <div class="container">
+                <div class="row display-table">
+                    <div class="col-sm-3 vertical-align text-left hidden-xs">
+                        <a href="javascript:void(0);">
+                            <img width="160" src="img/logo-big.png" alt="" />
+                        </a>
+                    </div><!-- end col -->
+                    <div class="col-sm-7 vertical-align text-center">
+                        <form>
+                            <div class="row grid-space-1">
+                                <div class="col-sm-6">
+                                    <input type="text" name="keyword" class="form-control input-lg" placeholder="Search">
+                                </div><!-- end col -->
+                                <div class="col-sm-3">
+                                    <select class="form-control input-lg" name="category">
+                                        <option value="all">All Categories</option>
+                                        <optgroup label="Mens">
+                                            <option value="shirts">Shirts</option>
+                                            <option value="coats-jackets">Coats & Jackets</option>
+                                            <option value="underwear">Underwear</option>
+                                            <option value="sunglasses">Sunglasses</option>
+                                            <option value="socks">Socks</option>
+                                            <option value="belts">Belts</option>
+                                        </optgroup>
+                                        <optgroup label="Womens">
+                                            <option value="bresses">Bresses</option>
+                                            <option value="t-shirts">T-shirts</option>
+                                            <option value="skirts">Skirts</option>
+                                            <option value="jeans">Jeans</option>
+                                            <option value="pullover">Pullover</option>
+                                        </optgroup>
+                                        <option value="kids">Kids</option>
+                                        <option value="fashion">Fashion</option>
+                                        <optgroup label="Sportwear">
+                                            <option value="shoes">Shoes</option>
+                                            <option value="bags">Bags</option>
+                                            <option value="pants">Pants</option>
+                                            <option value="swimwear">Swimwear</option>
+                                            <option value="bicycles">Bicycles</option>
+                                        </optgroup>
+                                        <option value="bags">Bags</option>
+                                        <option value="shoes">Shoes</option>
+                                        <option value="hoseholds">HoseHolds</option>
+                                        <optgroup label="Technology">
+                                            <option value="tv">TV</option>
+                                            <option value="camera">Camera</option>
+                                            <option value="speakers">Speakers</option>
+                                            <option value="mobile">Mobile</option>
+                                            <option value="pc">PC</option>
+                                        </optgroup>
+                                    </select>
+                                </div><!-- end col -->
+                                <div class="col-sm-3">
+                                    <input type="submit"  class="btn btn-default btn-block btn-lg" value="Search">
+                                </div><!-- end col -->
+                            </div><!-- end row -->
+                        </form>
+                    </div><!-- end col -->
+                    <div class="col-sm-2 vertical-align header-items hidden-xs">
+                        <div class="header-item mr-5">
+                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                                <i class="fa fa-heart-o"></i>
+                                <sub>32</sub>
+                            </a>
+                        </div>
+                        <div class="header-item">
+                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Compare">
+                                <i class="fa fa-refresh"></i>
+                                <sub>2</sub>
+                            </a>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end  row -->
+            </div><!-- end container -->
+        </div>--%><!-- end middleBar -->
+        
+        
+        
+        <!-- start footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-truck text-gray"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="alt-font text-light text-uppercase">Free Shipping</h6>
+                                <p class="text-gray">Free shipping is available anywhere.</p>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-life-ring text-gray"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="alt-font text-light text-uppercase">Support 24/7</h6>
+                                <p class="text-gray">Contact us on our email and helpline number.</p>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-gift text-gray"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="alt-font text-light text-uppercase">Cash on Delivery</h6>
+                                <p class="text-gray">Cash on Delivery is available arriving at your doorstep</p>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-credit-card text-gray"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="alt-font text-light text-uppercase">Payment 100% Secure</h6>
+                                <p class="text-gray">Payment is secure and safe.</p>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+                
+                <hr class="spacer-30">
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h5 class="title">Kisan Seva</h5>
+                        <p>Shop with us the quality you won't get elsewhere.</p>
+                        <hr class="spacer-10 no-border">
+                        
+                    
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <h5 class="title">My Account</h5>
+                        <ul class="list alt-list">
+                            <li><a href="profile.aspx"><i class="fa fa-angle-right"></i>My Account</a></li>
+                            <li><a href="cart.aspx"><i class="fa fa-angle-right"></i>My Cart</a></li>
+                            <li><a href="checkout.aspx"><i class="fa fa-angle-right"></i>Checkout</a></li>
+                        </ul>
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <h5 class="title">Information</h5>
+                        <ul class="list alt-list">
+                            <li><a href="aboutfarm.aspx"><i class="fa fa-angle-right"></i>About Us</a></li>
+                            <li><a href="faqfarm.aspx"><i class="fa fa-angle-right"></i>FAQ</a></li>
+                              </ul>
+                    </div><!-- end col -->
+              
+                </div><!-- end row -->
+                
+                <hr class="spacer-30">
+                
+                <div class="row text-center">
+                     2017. Made with <i class="fa fa-heart text-danger"></i> by <a href="javascript:void(0);">Reena Sequeira.</a></p>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </footer>
+        <!-- end footer -->
+        
+            <script src="design1/js/jquery-3.1.1.min.js"></script>
+            <script src="design1/js/bootstrap.min.js"></script>
+            <script src="design1/js/owl.carousel.min.js"></script>
+            <script src="design1/js/jquery.downCount.js"></script>
+            <script src="design1/js/nouislider.min.js"></script>
+            <script src="design1/js/jquery.sticky.js"></script>
+            <script src="design1/js/pace.min.js"></script>
+            <script src="design1/js/star-rating.min.js"></script>
+            <script src="design1/js/wow.min.js"></script>
+           
+       
+        </div>
+    </form>
+    </body>
+</html>
+
